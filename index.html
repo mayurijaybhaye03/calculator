@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Calculator</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <h1 class="text-center mt-4">My Simple Calculator</h1>
+    <div class="container text-center">
+      <div class="bg-secondary border border-5 border-primary w-50 mx-auto p-3 rounded">
+        <!-- Inline input fields -->
+        <div class="d-flex justify-content-center gap-3 mb-3">
+          <div>
+            <label for="txtnumber1" class="form-label text-white">First Number</label>
+            <input type="number" id="txtnumber1" class="form-control" value="0" required />
+          </div>
+          <div>
+            <label for="txtnumber2" class="form-label text-white">Second Number</label>
+            <input type="number" id="txtnumber2" class="form-control" value="0" required />
+          </div>
+        </div>
+
+        <!-- Buttons -->
+        <div class="mb-3">
+          <button class="btn btn-primary btn-lg me-1" onclick="calculate(1)">+</button>
+          <button class="btn btn-primary btn-lg me-1" onclick="calculate(2)">-</button>
+          <button class="btn btn-primary btn-lg me-1" onclick="calculate(3)">*</button>
+          <button class="btn btn-primary btn-lg me-1" onclick="calculate(4)">/</button>
+          <button class="btn btn-primary btn-lg" onclick="calculate(5)">%</button>
+        </div>
+
+        <!-- Result -->
+        <div id="result" class="bg-white p-2 rounded fw-bold"></div>
+      </div>
+    </div>
+
+    <script>
+      let elem = document.getElementById("result");
+
+      function calculate(opt) {
+        let n1 = parseFloat(document.getElementById("txtnumber1").value);
+        let n2 = parseFloat(document.getElementById("txtnumber2").value);
+        let output;
+
+        switch (opt) {
+          case 1:
+            output = n1 + n2;
+            break;
+          case 2:
+            output = n1 - n2;
+            break;
+          case 3:
+            output = n1 * n2;
+            break;
+          case 4:
+            output = n2 !== 0 ? n1 / n2 : "Cannot divide by zero";
+            break;
+          case 5:
+            output = n2 !== 0 ? n1 % n2 : "Cannot mod by zero";
+            break;
+        }
+
+        elem.innerHTML = "Result: " + output;
+      }
+    </script>
+  </body>
+</html>
